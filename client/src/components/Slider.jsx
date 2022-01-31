@@ -6,7 +6,7 @@ import { mobile } from "../responsive";
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -37,36 +37,42 @@ const Wrapper = styled.div`
   display: flex;
   transition: all 1.5s ease;
   transform: translateX(${(props) => props.slideIndex * -100}vw);
-`;
+  `;
 
 const Slide = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   align-items: center;
   background-color: #${(props) => props.bg};
 `;
 
 const ImgContainer = styled.div`
+  display: flex;
+  justify-content: center;
   height: 100%;
-  flex: 1;
-`;
+  overflow: hidden;
+  flex: 1 1 65%;
+  `;
 
 const Image = styled.img`
-  height: 80%;
+  /* height: 85%; */
+  object-fit: cover;
+  /* object-fit: fill; */
 `;
 
 const InfoContainer = styled.div`
-  flex: 1;
+  flex: 1 1 35%;
   padding: 50px;
 `;
 
 const Title = styled.h1`
-  font-size: 70px;
+  font-size: 50px;
 `;
 
 const Desc = styled.p`
   margin: 50px 0px;
+  /* margin-right: 100px; */
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 3px;

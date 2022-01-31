@@ -1,0 +1,68 @@
+[
+    {
+        "title": "Essentials Men's Short-Sleeve Slub Raglan Crew T-Shirt fit",
+        "desc": "100% Cotton. Imported. Machine Wash. Loose fit for a less structured relaxed silhouette. Soft and lightweight jersey slub cotton. Crew neckline.",
+        "img": "https://m.media-amazon.com/images/I/91nJJZ1iu6L._AC_UL1500_.jpg",
+        "categories": [
+            "T-Shirts"
+        ],
+        "size": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "color": [
+            "red"
+        ],
+        "price": {
+            "$numberInt": "17"
+        },
+        "inStock": true
+    },
+    {
+        "title": "Essentials Men's Jersey Polo Shirt fit",
+        "desc": "60% Cotton, 40% Polyester. Imported. Button closure. Machine Wash. Loose fit for a less structured relaxed silhouette. Baby soft and super smooth knit fabric. Button-front closure.",
+        "img": "https://m.media-amazon.com/images/I/81NDa395-qL._AC_UL1500_.jpg",
+        "categories": [
+            "Polos"
+        ],
+        "size": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "color": [
+            "green"
+        ],
+        "price": {
+            "$numberInt": "20"
+        },
+        "inStock": true
+    },
+    {
+        "title": "STAR WARS Men's Millennium Falcon Detailed Drawing T-Shirt",
+        "desc": "50% Cotton, 50% Polyester. Machine Wash. Official licensed Star Wars t-shirt by Mad Engine.Great for Star Wars fans.",
+        "img": "https://m.media-amazon.com/images/I/81P5IcD67RL._AC_UL1500_.jpg",
+        "categories": [
+            "T-Shirts"
+        ],
+        "size": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "color": [
+            "black"
+        ],
+        "price": {
+            "$numberInt": "15"
+        },
+        "inStock": true
+    }
+]

@@ -7,11 +7,15 @@ import {
   Room,
   Twitter,
 } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 
 const Container = styled.div`
   display: flex;
+  &a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+  color: black;}
   ${mobile({ flexDirection: "column" })}
 `;
 
@@ -59,6 +63,7 @@ const List = styled.ul`
   padding: 0;
   list-style: none;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 `;
 
@@ -92,19 +97,19 @@ const Footer = () => {
         <Desc>
           There are many variations of passages of Lorem Ipsum available, but
           the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don’t look even slightly believable.
+          humour, or randomised words which don't look even slightly believable.
         </Desc>
         <SocialContainer>
-          <SocialIcon color="3B5999">
+          <SocialIcon color="000000">
             <Facebook />
           </SocialIcon>
-          <SocialIcon color="E4405F">
+          <SocialIcon color="000000">
             <Instagram />
           </SocialIcon>
-          <SocialIcon color="55ACEE">
+          <SocialIcon color="000000">
             <Twitter />
           </SocialIcon>
-          <SocialIcon color="E60023">
+          <SocialIcon color="000000">
             <Pinterest />
           </SocialIcon>
         </SocialContainer>
@@ -112,25 +117,33 @@ const Footer = () => {
       <Center>
         <Title>Useful Links</Title>
         <List>
+          <Link to="/">
           <ListItem>Home</ListItem>
+          </Link>
+          <Link to="/cart">
           <ListItem>Cart</ListItem>
-          <ListItem>Man Fashion</ListItem>
-          <ListItem>Woman Fashion</ListItem>
+          </Link>
+          <Link to="/products/Shirts">
+          <ListItem>Shirts</ListItem>
+          </Link>
+          <Link to="/products/Hoodies">
+          <ListItem>Hoodies</ListItem>
+          </Link>
+          <Link to="/products/Accessories">
           <ListItem>Accessories</ListItem>
+          </Link>
+          <Link to="/login">
           <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Terms</ListItem>
+          </Link>
         </List>
       </Center>
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <Room style={{marginRight:"10px"}}/> 622 Dixie Path , South Tobinchester 98336
+          <Room style={{marginRight:"10px"}}/> 6803 Dickens Islands Apt. 567, Port Malikaview, TX 14942
         </ContactItem>
         <ContactItem>
-          <Phone style={{marginRight:"10px"}}/> +1 234 56 78
+          <Phone style={{marginRight:"10px"}}/> +1 234 56 789
         </ContactItem>
         <ContactItem>
           <MailOutline style={{marginRight:"10px"}} /> contact@store.com

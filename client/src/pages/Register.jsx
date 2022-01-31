@@ -15,7 +15,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("https://images.pexels.com/photos/6984661/pexels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+    url("https://burst.shopifycdn.com/photos/stylish-man-outdoors.jpg")
       center;
   background-size: cover;
   display: flex;
@@ -168,12 +168,12 @@ const Register = () => {
         <Form onSubmit={handleClick}>
           {inputs.map((input) => (
           <FormInput
-            key={input.id}
-            {...input}
-            value={values[input.name]}
-            onChange={onChange}
+          key={input.id}
+          {...input}
+          value={values[input.name]}
+          onChange={onChange}
           />
-        ))}
+          ))}
           <Button disabled={isFetching}>CREATE</Button>
           {error && !userRegistered && <Error>Please try again...</Error>}
           {userRegistered && <Success>User have been registered. You can now <Link style={{fontWeight: 800}} to="/login"> sign in!</Link></Success>}

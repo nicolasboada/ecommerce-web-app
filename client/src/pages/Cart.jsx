@@ -1,6 +1,7 @@
 import { Add, Remove, DeleteOutline } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
@@ -31,7 +32,7 @@ const Top = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 20px 35px 20px;
 `;
 
 const TopButton = styled.button`
@@ -42,15 +43,6 @@ const TopButton = styled.button`
   background-color: ${(props) =>
     props.type === "filled" ? "black" : "transparent"};
   color: ${(props) => props.type === "filled" && "white"};
-`;
-
-const TopTexts = styled.div`
-  ${mobile({ display: "none" })}
-`;
-const TopText = styled.span`
-  text-decoration: underline;
-  cursor: pointer;
-  margin: 0px 10px;
 `;
 
 const Bottom = styled.div`
@@ -104,7 +96,7 @@ const PriceDetail = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
+  ${mobile({ flexDirection: "row", justifyContent: "space-evenly", alignItems: "baseline", margin: "10px" })}`;
 
 const ProductAmountContainer = styled.div`
   display: flex;
@@ -123,12 +115,6 @@ const ProductPrice = styled.div`
   font-weight: 200;
   margin-bottom: 20px;
   ${mobile({ marginBottom: "20px" })}
-`;
-
-const Hr = styled.hr`
-  background-color: #eee;
-  border: none;
-  height: 1px;
 `;
 
 const Summary = styled.div`
@@ -250,11 +236,9 @@ const Cart = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
+          <Link to={"/"}>
           <TopButton>CONTINUE SHOPPING</TopButton>
-          <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
-            <TopText>Your Wishlist (0)</TopText>
-          </TopTexts>
+          </Link>
           <TopButton type="filled">CHECKOUT NOW</TopButton>
         </Top>
         <Bottom>
@@ -289,7 +273,6 @@ const Cart = () => {
                 </PriceDetail>
               </Product>
             ))}
-            <Hr />
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>

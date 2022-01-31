@@ -1,5 +1,7 @@
 import { Badge } from "@material-ui/core";
-import { Search, ShoppingCartOutlined,CancelOutlined} from "@material-ui/icons";
+import { Search, ShoppingCartOutlined,} from "@material-ui/icons";
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
@@ -33,22 +35,24 @@ const Left = styled.div`
   align-items: center;
 `;
 
-const Language = styled.span`
-  font-size: 14px;
-  cursor: pointer;
-  ${mobile({ display: "none" })}
-`;
+// const Language = styled.span`
+//   font-size: 14px;
+//   cursor: pointer;
+//   ${mobile({ display: "none" })}
+// `;
 
 const SearchContainer = styled.div`
   border: 0.5px solid lightgray;
+  border-radius: 15px;
   display: flex;
   align-items: center;
-  margin-left: 25px;
   padding: 5px;
+  ${mobile({ marginLeft: "10px" })}
 `;
 
 const Input = styled.input`
   border: none;
+  margin-left: 5px;
   ${mobile({ width: "50px" })}
 `;
 
@@ -67,7 +71,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${mobile({ flex: 2, justifyContent: "center" })}
+  ${mobile({ flex: 1, justifyContent: "right", marginRight: "15px" })}
 `;
 
 const MenuItem = styled.div`
@@ -75,6 +79,13 @@ const MenuItem = styled.div`
   cursor: pointer;
   margin-left: 25px;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+`;
+
+const MenuItemMobileDisable = styled.div`
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 25px;
+  ${mobile({ display: "none"})}
 `;
 
 const Navbar = () => {
@@ -117,10 +128,10 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Language>EN</Language>
+          {/* <Language>EN</Language> */}
           <SearchContainer>
             <Input placeholder="Search" />
-            <Search style={{ color: "gray", fontSize: 16 }} />
+            <Search style={{ color: "gray", fontSize: 16, marginRight: 5 }} />
           </SearchContainer>
         </Left>
         <Center>
@@ -131,12 +142,13 @@ const Navbar = () => {
         <Right>
           {currentUser ? 
           <>
-          <span>{currentUser.username}</span>
-          <CancelOutlined style={{marginLeft: "0.3rem", cursor: "pointer"}} onClick={handleClick}/>
+          <AccountCircleOutlinedIcon style={{marginRight: "0.3rem"}}/>
+          <span style={{cursor: "default"}}>{currentUser.username}</span>
+          <ExitToAppOutlinedIcon style={{marginLeft: "0.9rem", cursor: "pointer"}} onClick={handleClick}/>
           </>:
           <>
           <Link to="/register">
-          <MenuItem>REGISTER</MenuItem>
+          <MenuItemMobileDisable>REGISTER</MenuItemMobileDisable>
           </Link>
           <Link to="/login">
           <MenuItem>SIGN IN</MenuItem>
