@@ -78,14 +78,8 @@ const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  display: ${(props) => props.display === "none" && "none"};
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
-`;
-
-const MenuItemMobileDisable = styled.div`
-  font-size: 14px;
-  cursor: pointer;
-  margin-left: 25px;
-  ${mobile({ display: "none"})}
 `;
 
 const Navbar = () => {
@@ -148,10 +142,10 @@ const Navbar = () => {
           </>:
           <>
           <Link to="/register">
-          <MenuItemMobileDisable>REGISTER</MenuItemMobileDisable>
+          <MenuItem display="none">REGISTER</MenuItem>
           </Link>
           <Link to="/login">
-          <MenuItem>SIGN IN</MenuItem>
+          <MenuItem >SIGN IN</MenuItem>
           </Link>
           </>
           }

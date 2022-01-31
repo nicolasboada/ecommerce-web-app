@@ -16,7 +16,7 @@ const Container = styled.div`
 const Arrow = styled.div`
   width: 50px;
   height: 50px;
-  background-color: #fff7f7;
+  background-color: #bdbbbb;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -45,7 +45,7 @@ const Slide = styled.div`
   display: flex;
   align-items: center;
   background-color: #${(props) => props.bg};
-`;
+  `;
 
 const ImgContainer = styled.div`
   display: flex;
@@ -56,34 +56,34 @@ const ImgContainer = styled.div`
   `;
 
 const Image = styled.img`
-  /* height: 85%; */
   object-fit: cover;
-  /* object-fit: fill; */
-`;
+  `;
 
 const InfoContainer = styled.div`
   flex: 1 1 35%;
   padding: 50px;
-`;
+  `;
 
 const Title = styled.h1`
   font-size: 50px;
-`;
+  color: #${(props) => props.cl};
+  `;
 
 const Desc = styled.p`
-  margin: 50px 0px;
-  /* margin-right: 100px; */
+  margin: 50px 50px 50px 0px;
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 3px;
-`;
+  color: #${(props) => props.cl};
+  `;
 
 const Button = styled.button`
   padding: 10px;
   font-size: 20px;
+  color: #${(props) => props.cl};
   background-color: transparent;
   cursor: pointer;
-`;
+  `;
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -107,9 +107,9 @@ const Slider = () => {
               <Image src={item.img} />
             </ImgContainer>
             <InfoContainer>
-              <Title>{item.title}</Title>
-              <Desc>{item.desc}</Desc>
-              <Button>SHOW NOW</Button>
+              <Title cl={item.cl}>{item.title}</Title>
+              <Desc cl={item.cl}>{item.desc}</Desc>
+              <Button cl={item.cl}>SHOW NOW</Button>
             </InfoContainer>
           </Slide>
         ))}
