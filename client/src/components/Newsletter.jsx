@@ -19,6 +19,7 @@ const Desc = styled.div`
   font-size: 20px;
   font-weight: 300;
   margin-bottom: 20px;
+  max-width: 80vw;
   text-align: center;
 `;
 

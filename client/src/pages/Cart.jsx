@@ -6,15 +6,10 @@ import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Newsletter from "../components/Newsletter";
 import { decreaseQuantity, getProducts, increaseQuantity, removeProduct } from "../redux/cartRedux";
 import { userRequest } from "../requestMethods";
 import { mobile } from "../responsive";
-// import StripeCheckout from "react-stripe-checkout";
-// import { useEffect, useState } from "react";
-// import { userRequest } from "../requestMethods";
-// import { useHistory } from "react-router";
-
-// const KEY = process.env.REACT_APP_STRIPE;
 
 const Container = styled.div``;
 
@@ -38,11 +33,13 @@ const Top = styled.div`
 const TopButton = styled.button`
   padding: 10px;
   font-weight: 600;
+  margin: 0 1rem;
   cursor: pointer;
   border: ${(props) => props.type === "filled" && "none"};
   background-color: ${(props) =>
     props.type === "filled" ? "black" : "transparent"};
   color: ${(props) => props.type === "filled" && "white"};
+
 `;
 
 const Bottom = styled.div`
@@ -58,16 +55,21 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({ flexDirection: "column" })}
+  margin-left: 10%;
+  margin-bottom: 2rem;
+  max-width: 1100px;
+  ${mobile({ flexDirection: "column", marginLeft: "auto" })}
 `;
 
 const ProductDetail = styled.div`
-  flex: 2;
   display: flex;
 `;
 
 const Image = styled.img`
-  width: 200px;
+  object-fit: contain;
+  width: 180px;
+  margin-right: 1rem;
+  ${mobile({ width: "150px", marginLeft: "1.5rem", marginRight: "0" })}
 `;
 
 const Details = styled.div`
@@ -75,28 +77,30 @@ const Details = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: flex-start;
 `;
 
-const ProductName = styled.span``;
-
-const ProductId = styled.span``;
+const ProductName = styled.span`
+  margin-bottom: 0.5rem;
+`;
 
 const ProductColor = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  margin-bottom: 0.5rem;
   background-color: ${(props) => props.color};
 `;
 
 const ProductSize = styled.span``;
 
 const PriceDetail = styled.div`
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  ${mobile({ flexDirection: "row", justifyContent: "space-evenly", alignItems: "baseline", margin: "10px" })}`;
+  padding: 0 20% 0 0.5rem;
+  ${mobile({ flexDirection: "row", justifyContent: "space-evenly", alignItems: "baseline", margin: "10px", padding: "0" })}`;
 
 const ProductAmountContainer = styled.div`
   display: flex;
@@ -115,14 +119,16 @@ const ProductPrice = styled.div`
   font-weight: 200;
   margin-bottom: 20px;
   ${mobile({ marginBottom: "20px" })}
-`;
+  `;
 
 const Summary = styled.div`
   flex: 1;
   border: 0.5px solid lightgray;
   border-radius: 10px;
-  padding: 20px;
-  height: 50vh;
+  padding: 25px;
+  margin-right: 5%;
+  margin-bottom: 10rem;
+  ${mobile({ marginRight: "0"})}
 `;
 
 const SummaryTitle = styled.h1`
@@ -204,30 +210,6 @@ const Cart = () => {
     await userRequest.put(`/carts/${user.currentUser._id}`,updatedCart)
     dispatch(decreaseQuantity({...product}))
   }
-
-
-
-  // const [stripeToken, setStripeToken] = useState(null);
-  // const history = useHistory();
-
-  // const onToken = (token) => {
-  //   setStripeToken(token);
-  // };
-
-  // useEffect(() => {
-  //   const makeRequest = async () => {
-  //     try {
-  //       const res = await userRequest.post("/checkout/payment", {
-  //         tokenId: stripeToken.id,
-  //         amount: 500,
-  //       });
-  //       history.push("/success", {
-  //         stripeData: res.data,
-  //         products: cart, });
-  //     } catch {}
-  //   };
-  //   stripeToken && makeRequest();
-  // }, [stripeToken, cart.total, history]);
   
   return (
     <Container>
@@ -251,9 +233,6 @@ const Cart = () => {
                     <ProductName>
                       <b>Product:</b> {product.title}
                     </ProductName>
-                    <ProductId>
-                      <b>ID:</b> {product.productId}
-                    </ProductId>
                     <ProductColor color={product.color} />
                     <ProductSize>
                       <b>Size:</b> {product.size}
@@ -292,21 +271,11 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$ {cart.total + estimatedShipping + shippingDiscount }</SummaryItemPrice>
             </SummaryItem>
-            {/* <StripeCheckout
-              name="Store Shop"
-              image="https://avatars.githubusercontent.com/u/1486366?v=4"
-              billingAddress
-              shippingAddress
-              description={`Your total is $${cart.total}`}
-              amount={cart.total * 100}
-              token={onToken}
-              stripeKey={KEY}
-            > */}
               <Button>CHECKOUT NOW</Button>
-            {/* </StripeCheckout> */}
           </Summary>
         </Bottom>
       </Wrapper>
+      <Newsletter/>
       <Footer />
     </Container>
   );

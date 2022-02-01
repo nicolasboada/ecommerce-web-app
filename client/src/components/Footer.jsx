@@ -13,6 +13,7 @@ import { mobile } from "../responsive";
 
 const Container = styled.div`
   display: flex;
+  background-color: #fff8f8;
   &a:hover, a:visited, a:link, a:active {
   text-decoration: none;
   color: black;}

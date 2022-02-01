@@ -53,7 +53,8 @@ const Circle = styled.div`
 `;
 
 const Image = styled.img`
-  height: 75%;
+  max-width: 90%;
+  max-height: 75%;
   z-index: 2;
 `;
 

@@ -26,11 +26,13 @@ const ImgContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
   `;
 
 const Image = styled.img`
   width: 100%;
   min-width: 340px;
+  max-width: 600px;
   object-fit: contain;
   ${mobile({ height: "40vh" })}
   ${mobile({ flex: "1" })}
@@ -42,14 +44,15 @@ const InfoContainer = styled.div`
   margin-top: 50px;
   ${mobile({ padding: "10px"})};
   ${mobile({ marginTop: "0"})};
-`;
+  `;
 
 const Title = styled.h1`
   font-weight: 200;
   margin-top: 10px;
-`;
+  `;
 
 const Desc = styled.p`
+  max-width: 500px;
   margin: 20px 0px;
 `;
 
