@@ -30,7 +30,7 @@ export const categories = [
     id: 1,
     img: "https://images.unsplash.com/photo-1638993029979-2fd6e7867660?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80",
     title: "HOODIE LOVE",
-    cat: "Hoodies",
+    cat: "Hoodie",
   },
   {
     id: 2,
