@@ -130,8 +130,8 @@ const Footer = () => {
           <Link to="/products/Hoodies">
           <ListItem>Hoodies</ListItem>
           </Link>
-          <Link to="/products/Accessories">
-          <ListItem>Accessories</ListItem>
+          <Link to="/products/Caps">
+          <ListItem>Caps</ListItem>
           </Link>
           <Link to="/login">
           <ListItem>My Account</ListItem>
