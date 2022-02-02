@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { publicRequest, userRequest } from "../requestMethods";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch, useSelector } from "react-redux";
+import ShopMenu from "../components/ShopMenu";
 
 const Container = styled.div`
 `;
@@ -215,6 +216,7 @@ const Product = () => {
     <Container>
       <Announcement />
       <Navbar />
+      <ShopMenu/>
       <Wrapper>
         <ImgContainer>
           <Image src={product.img} />

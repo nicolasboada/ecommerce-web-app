@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router";
 import { useState } from "react";
+import ShopMenu from "../components/ShopMenu";
 
 const Container = styled.div``;
 
@@ -56,6 +57,7 @@ const ProductList = () => {
     <Container>
       <Announcement />
       <Navbar />
+      <ShopMenu/>
       <Title>{cat}</Title>
       <FilterContainer>
         <Filter>
