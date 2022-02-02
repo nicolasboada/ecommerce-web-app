@@ -53,6 +53,9 @@ const SearchContainer = styled.div`
 const Input = styled.input`
   border: none;
   margin-left: 5px;
+  &:focus{
+    outline: none;
+  }
   ${mobile({ width: "50px" })}
 `;
 
