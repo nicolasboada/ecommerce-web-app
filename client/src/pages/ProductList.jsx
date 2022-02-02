@@ -6,7 +6,7 @@ import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ShopMenu from "../components/ShopMenu";
 
 const Container = styled.div``;
@@ -44,6 +44,8 @@ const ProductList = () => {
   const cat = location.pathname.split("/")[2];
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("newest");
+  const [colors, setColors] = useState([]);
+  const [sizes, setSizes] = useState([]);
 
   const handleFilters = (e) => {
     const value = e.target.value;
@@ -52,6 +54,11 @@ const ProductList = () => {
       [e.target.name]: value,
     });
   };
+
+  useEffect(() => {
+    setFilters({})
+  }, [colors]);
+  
 
   return (
     <Container>
@@ -64,20 +71,11 @@ const ProductList = () => {
           <FilterText>Filter Products:</FilterText>
           <Select name="color" onChange={handleFilters}>
             <Option disabled>Color</Option>
-            <Option>white</Option>
-            <Option>black</Option>
-            <Option>red</Option>
-            <Option>blue</Option>
-            <Option>yellow</Option>
-            <Option>green</Option>
+            {colors.length>0 ? colors.map(color=><Option>{color}</Option>) : <Option></Option>}
           </Select>
           <Select name="size" onChange={handleFilters}>
             <Option disabled>Size</Option>
-            <Option>XS</Option>
-            <Option>S</Option>
-            <Option>M</Option>
-            <Option>L</Option>
-            <Option>XL</Option>
+            {sizes.length>0 ? sizes.map(size=><Option>{size}</Option>) : <Option></Option>}
           </Select>
         </Filter>
         <Filter>
@@ -89,7 +87,7 @@ const ProductList = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products cat={cat} filters={filters} sort={sort} />
+      <Products cat={cat} filters={filters} sort={sort} setColors={setColors} setSizes={setSizes}/>
       <Newsletter />
       <Footer />
     </Container>

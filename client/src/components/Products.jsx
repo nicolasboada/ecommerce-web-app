@@ -10,7 +10,7 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Products = ({ cat, filters, sort }) => {
+const Products = ({ cat, filters, sort, setColors, setSizes}) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -55,13 +55,20 @@ const Products = ({ cat, filters, sort }) => {
     }
   }, [sort]);
 
+  useEffect(() => {
+    if (!setColors) return;
+    if (!setSizes) return;
+    setColors([...new Set(products.map(product => product.color[0]))])
+    setSizes([...new Set(products.map(product => product.size).flat())])
+  },[products,setColors,setSizes]);
+
   return (
     <Container>
       {cat
         ? filteredProducts.map((item) => <Product item={item} key={item.id} />)
         : products
-          .slice(0, 8)
-          .map((item) => <Product item={item} key={item.id} />)}
+        .slice(0, 8)
+        .map((item) => <Product item={item} key={item.id} />)}
     </Container>
   );
 };
