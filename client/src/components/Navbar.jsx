@@ -106,7 +106,6 @@ const Navbar = () => {
     .get(`carts/find/${currentUser._id}`)
     .then(res => {
       if (res.data.products.length===0 && cart.products.length>0 ) {
-        console.log('el carro estaba vacio')
         const currentCart = {"products":[...cart.products]}
         userRequest.put(`/carts/${currentUser._id}`, currentCart)
       } 

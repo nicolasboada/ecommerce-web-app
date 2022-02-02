@@ -77,7 +77,6 @@ const Register = () => {
 
   const handleClick = (e) => {
     e.preventDefault()
-    console.log("form submited")
     register(dispatch,{username: values.username, email: values.email, password: values.password});
   }
 

@@ -170,8 +170,6 @@ const Product = () => {
   };
 
   const handleClick = async () => {
-    console.log("cart: " ,cart)
-    console.log("product: " ,product)
     const index = cart.products.findIndex(
       (cartProduct) =>
         cartProduct.productId + cartProduct.color + cartProduct.size ===
@@ -187,7 +185,6 @@ const Product = () => {
       "size":size
     }
     try {
-      console.log("index: ",index)
       if (index === -1) {
         const updatedCart = {"products":[...cart.products,newCartProduct]}
         if (!user.currentUser) {
