@@ -57,7 +57,7 @@ const ProductList = () => {
 
   useEffect(() => {
     setFilters({})
-  }, [colors]);
+  }, [colors, sizes]);
   
 
   return (
@@ -70,11 +70,11 @@ const ProductList = () => {
         <Filter>
           <FilterText>Filter Products:</FilterText>
           <Select name="color" onChange={handleFilters}>
-            <Option disabled>Color</Option>
+            <Option disabled selected>Color</Option>
             {colors.length>0 ? colors.map(color=><Option>{color}</Option>) : <Option></Option>}
           </Select>
           <Select name="size" onChange={handleFilters}>
-            <Option disabled>Size</Option>
+            <Option disabled selected>Size</Option>
             {sizes.length>0 ? sizes.map(size=><Option>{size}</Option>) : <Option></Option>}
           </Select>
         </Filter>
