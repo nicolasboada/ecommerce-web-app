@@ -8,7 +8,7 @@ const Div = styled.div`
     transform: translate(-50%, -50%);
     width: 500px;
     max-width: 80vw;
-    border-radius: 1rem;
+    border-radius: 0.7rem;
     background-color: white;
     border: '2px solid #000';
     padding: 1rem;

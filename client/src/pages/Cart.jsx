@@ -35,6 +35,7 @@ const Top = styled.div`
 const TopButton = styled.button`
   padding: 10px;
   font-weight: 600;
+  border-radius: 1rem;
   margin: 0 1rem;
   cursor: pointer;
   border: ${(props) => props.type === "filled" && "none"};
@@ -153,6 +154,7 @@ const Button = styled.button`
   width: 100%;
   padding: 10px;
   background-color: black;
+  border-radius: 0.7rem;
   color: white;
   font-weight: 600;
 `;
