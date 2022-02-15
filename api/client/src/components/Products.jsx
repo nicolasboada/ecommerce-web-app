@@ -19,8 +19,8 @@ const Products = ({ cat, filters, sort, setColors, setSizes}) => {
       try {
         const res = await axios.get(
           cat
-            ? `http://172.27.28.198:5000/api/products?category=${cat}`
-            : `http://172.27.28.198:5000/api/products`
+            ? `https://ecommerce-mern-2022.herokuapp.com/api/products?category=${cat}`
+            : `https://ecommerce-mern-2022.herokuapp.com/api/products`
         );
         setProducts(res.data);
       } catch (err) { }

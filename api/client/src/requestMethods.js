@@ -1,7 +1,8 @@
 import axios from "axios";
 
 // const BASE_URL = "http://localhost:5000/api/";
-const BASE_URL = "http://172.27.28.198:5000/api/";
+// const BASE_URL = "http://172.20.182.41:5000/api/";
+const BASE_URL = "https://ecommerce-mern-2022.herokuapp.com/api/";
 
 const get_token = () => {
   if (JSON.parse(localStorage.getItem("persist:root"))) {
