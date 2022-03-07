@@ -5,6 +5,7 @@ import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanErrors } from "../redux/userRedux";
 import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -63,14 +64,15 @@ const Button = styled.button`
   }
 `;
 
-const Link = styled.a`
+const Item = styled.div`
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
-  &:hover, :visited, :link, :active {
   color: black;
-  }
+  &:hover, :visited, :link, :active {
+   color: black;
+   }
 `;
 
 const Error = styled.span`
@@ -124,7 +126,9 @@ const Login = () => {
           </Button>
           {error && <Error>Something went wrong...</Error>}
           {/* <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link> */}
-          <Link href={"/register"}>CREATE A NEW ACCOUNT</Link>
+          <Link to="/register">
+          <Item>CREATE A NEW ACCOUNT</Item>
+          </Link>
         </Form>
       </Wrapper>
     </Container>
