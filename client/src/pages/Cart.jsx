@@ -10,8 +10,10 @@ import Newsletter from "../components/Newsletter";
 import { decreaseQuantity, getProducts, increaseQuantity, removeProduct } from "../redux/cartRedux";
 import { userRequest } from "../requestMethods";
 import { mobile } from "../responsive";
-import Modal from '@material-ui/core/Modal';
-import ModalCheckout from "../components/ModalCheckout";
+import StripeCheckout from "react-stripe-checkout";
+import { useHistory } from "react-router";
+
+const PUBLIC_KEY = "pk_test_51Kb3QGFBylUynMbsSjMJyFxBKeIzO2M6eZT3wbVZnFKaWiaX9DqRHPN97nQApHnpbBWccwP0jn1Z0cJtJnkYLu6200josIapy6";
 
 const Container = styled.div``;
 
@@ -165,15 +167,28 @@ const Cart = () => {
   const [estimatedShipping, setEstimatedShipping] = useState(0)
   const [shippingDiscount, setShippingDiscount] = useState(0)
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
+  const history = useHistory();
+  const [stripeToken, setStripeToken] = useState(null);
+
+   const onToken = (token) => {
+    setStripeToken(token);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: (cart.total + estimatedShipping + shippingDiscount) * 100,
+        });
+        history.push("/success", {
+          stripeData: res.data,
+          products: cart, });
+      } catch {}
+    };
+    stripeToken && ((cart.total + estimatedShipping + shippingDiscount) * 100 > 0) && makeRequest();
+  }, [stripeToken, cart, history, estimatedShipping, shippingDiscount]);
 
   useEffect(() => {
       if (!user.currentUser) return;
@@ -234,7 +249,17 @@ const Cart = () => {
           <Link to={"/"}>
           <TopButton>CONTINUE SHOPPING</TopButton>
           </Link>
-          <TopButton type="filled" onClick={handleOpen}>CHECKOUT NOW</TopButton>
+          <StripeCheckout
+              name="Store."
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total + estimatedShipping + shippingDiscount}`}
+              amount={(cart.total + estimatedShipping + shippingDiscount) * 100}
+              token={onToken}
+              stripeKey={PUBLIC_KEY}
+            >
+          <TopButton type="filled">CHECKOUT NOW</TopButton>
+          </ StripeCheckout>
         </Top>
         <Bottom>
           <Info>  
@@ -284,22 +309,22 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$ {cart.total + estimatedShipping + shippingDiscount }</SummaryItemPrice>
             </SummaryItem>
-              <Button onClick={handleOpen}>CHECKOUT NOW</Button>
+            <StripeCheckout
+              name="Store."
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total + estimatedShipping + shippingDiscount}`}
+              amount={(cart.total + estimatedShipping + shippingDiscount) * 100}
+              token={onToken}
+              stripeKey={PUBLIC_KEY}
+            >
+              <Button>CHECKOUT NOW</Button>
+            </StripeCheckout>
           </Summary>
         </Bottom>
       </Wrapper>
       <Newsletter/>
       <Footer />
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-        >
-        {/* <h1>title</h1> */}
-        <ModalCheckout/>
-        
-      </Modal>
     </Container>
   );
 };
