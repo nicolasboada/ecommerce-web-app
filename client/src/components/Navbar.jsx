@@ -18,6 +18,8 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 10px 20px;
   display: flex;
   align-items: center;
@@ -124,7 +126,6 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          {/* <Language>EN</Language> */}
           <SearchContainer>
             <Input placeholder="Search" />
             <Search style={{ color: "gray", fontSize: 16, marginRight: 5 }} />

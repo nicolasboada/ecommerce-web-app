@@ -12,10 +12,14 @@ import ShopMenu from "../components/ShopMenu";
 const Container = styled.div``;
 
 const Title = styled.h1`
-  margin: 20px;
-`;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  `;
 
 const FilterContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
 `;

@@ -4,6 +4,8 @@ import { mobile } from "../responsive";
 import CategoryItem from "./CategoryItem";
 
 const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   padding: 20px;
   justify-content: space-between;

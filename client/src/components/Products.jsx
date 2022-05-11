@@ -4,6 +4,8 @@ import Product from "./Product";
 import axios from "axios";
 
 const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -19,8 +21,10 @@ const Products = ({ cat, filters, sort, setColors, setSizes}) => {
       try {
         const res = await axios.get(
           cat
-            ? `https://ecommerce-mern-2022.herokuapp.com/api/products?category=${cat}`
-            : `https://ecommerce-mern-2022.herokuapp.com/api/products`
+            // ? `https://ecommerce-mern-2022.herokuapp.com/api/products?category=${cat}`
+            ? `http://localhost:5000/api/products?category=${cat}`
+            // : `https://ecommerce-mern-2022.herokuapp.com/api/products`
+            : `http://localhost:5000/api/products`
         );
         setProducts(res.data);
       } catch (err) { }

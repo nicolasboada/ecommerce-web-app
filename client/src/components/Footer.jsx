@@ -12,13 +12,18 @@ import styled from "styled-components";
 import { mobile } from "../responsive";
 
 const Container = styled.div`
-  display: flex;
   background-color: #fff8f8;
+`;
+
+const Wrapper = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
   &a:hover, a:visited, a:link, a:active {
   text-decoration: none;
   color: black;}
   ${mobile({ flexDirection: "column" })}
-`;
+`
 
 const Left = styled.div`
   flex: 1;
@@ -93,6 +98,7 @@ const Payment = styled.img`
 const Footer = () => {
   return (
     <Container>
+    <Wrapper>
       <Left>
         <Logo>STORE.</Logo>
         <Desc>
@@ -151,6 +157,7 @@ const Footer = () => {
         </ContactItem>
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>
+    </Wrapper>
     </Container>
   );
 };

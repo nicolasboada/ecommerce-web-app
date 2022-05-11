@@ -18,6 +18,8 @@ const PUBLIC_KEY = "pk_test_51Kb3QGFBylUynMbsSjMJyFxBKeIzO2M6eZT3wbVZnFKaWiaX9Dq
 const Container = styled.div``;
 
 const Wrapper = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
   ${mobile({ padding: "10px" })}
 `;

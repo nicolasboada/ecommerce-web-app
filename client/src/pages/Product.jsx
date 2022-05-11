@@ -16,6 +16,8 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 50px;
   display: flex;
   min-height: 90vh;
@@ -31,10 +33,12 @@ const ImgContainer = styled.div`
   `;
 
 const Image = styled.img`
+  margin-top: 40px;
   width: 100%;
   min-width: 340px;
   max-width: 600px;
   object-fit: contain;
+  ${mobile({ marginTop: "0px" })}
   ${mobile({ height: "40vh" })}
   ${mobile({ flex: "1" })}
 `;
